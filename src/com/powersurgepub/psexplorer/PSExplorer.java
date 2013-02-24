@@ -17,6 +17,7 @@
 package com.powersurgepub.psexplorer;
 
   import com.powersurgepub.xos2.*;
+  import edu.stanford.ejalbert.*;
   import java.awt.*;
   import java.io.*;
   import java.util.*;
@@ -33,10 +34,13 @@ public class PSExplorer
 	public  final static char    LINE_FEED                = '\n';
 	public  final static String  LINE_FEED_STRING         = "\n";
   
+  private             edu.stanford.ejalbert.BrowserLauncher launcher = null;
+  
   /** 
    Creates new form PSExplorer. 
    */
   public PSExplorer() {
+
     initComponents();
     getRootPane().putClientProperty
         ("defeatSystemEventQueueCheck", Boolean.TRUE);
@@ -89,18 +93,14 @@ public class PSExplorer
     // Display Browswer Launcher info
     displayLine (" ");
     try {
-      BrowserLauncher.openURL ("http://www.powersurgepub.com/");
-      displayLine("BrowserLauncher openURL executed without exception");
-    } catch (IOException e) {
-      displayLine("Attempt to open URL returned exception: " + e.toString());
+      launcher = new edu.stanford.ejalbert.BrowserLauncher();
+      displayLine("BrowserLauncher2 initialized without exception");
+    } catch (Exception e) {
+      displayLine
+          ("Attempt to initialize BrowserLauncher2 returned exception: " 
+            + e.toString());
     }
-    
-    displayLine("BrowserLauncher loaded without errors? "
-        + String.valueOf(BrowserLauncher.getLoadedWithoutErrors()));
-    displayLine("BrowserLauncher JVM Switch: " 
-        + String.valueOf(BrowserLauncher.getJVMSwitch()));
-    displayLine("BrowserLauncher Browser: "
-        + BrowserLauncher.locateBrowser().toString());
+    launcher.openURLinBrowser("http://www.powersurgepub.com/");
     
     displayLine(" ");
     
