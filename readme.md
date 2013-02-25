@@ -17,7 +17,9 @@ Source code for BrowserLauncher2 is available at
 Rights
 ------ 
 
-### PSExplorer - Copyright 2004 - 2013 Herb Bowie
+### PSExplorer 
+
+Copyright 2004 - 2013 Herb Bowie
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -31,7 +33,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-### BrowserLauncher2 - continuation of the BrowserLauncher project, is a library that facilitates opening a browser from a Java application and directing the browser to a supplied url.
+### BrowserLauncher2
 
 Copyright 2004,2005,2006,2007 Markus Gebhard, Jeff Chapman
 
