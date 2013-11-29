@@ -16,10 +16,9 @@
 
 package com.powersurgepub.psexplorer;
 
-  import com.powersurgepub.xos2.*;
-  import edu.stanford.ejalbert.*;
   import java.awt.*;
   import java.io.*;
+  import java.net.*;
   import java.util.*;
 
 /**
@@ -34,7 +33,7 @@ public class PSExplorer
 	public  final static char    LINE_FEED                = '\n';
 	public  final static String  LINE_FEED_STRING         = "\n";
   
-  private             edu.stanford.ejalbert.BrowserLauncher launcher = null;
+  private              Desktop desktop;
   
   /** 
    Creates new form PSExplorer. 
@@ -91,16 +90,26 @@ public class PSExplorer
     }
     
     // Display Browswer Launcher info
-    displayLine (" ");
-    try {
-      launcher = new edu.stanford.ejalbert.BrowserLauncher();
-      displayLine("BrowserLauncher2 initialized without exception");
-    } catch (Exception e) {
-      displayLine
-          ("Attempt to initialize BrowserLauncher2 returned exception: " 
-            + e.toString());
+    if (Desktop.isDesktopSupported()) {
+      desktop = Desktop.getDesktop();
+      displayLine("Desktop initialized without exception");
+      if (desktop.isSupported(Desktop.Action.BROWSE)) {
+        try {
+          URI uri = new URI("http://www.powersurgepub.com/");
+          desktop.browse(uri);
+        } catch (URISyntaxException e) {
+          displayLine("URI Syntax Exception");
+        } catch (IOException ex) {
+          displayLine("I/O Exception");
+        }
+      } else {
+        displayLine("Desktop Browse not supported");
+      }
+    } else {
+      desktop = null;
+      displayLine("Desktop not available");
     }
-    launcher.openURLinBrowser("http://www.powersurgepub.com/");
+    displayLine (" ");
     
     displayLine(" ");
     
