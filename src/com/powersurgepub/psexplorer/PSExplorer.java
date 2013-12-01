@@ -218,7 +218,7 @@ public class PSExplorer
    * @param args the command line arguments
    */
   public static void main(String args[]) {
-    new PSExplorer().show();
+    new PSExplorer().setVisible(true);
   }
   
   // Variables declaration - do not modify//GEN-BEGIN:variables
